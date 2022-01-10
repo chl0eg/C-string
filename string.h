@@ -1,10 +1,12 @@
 class string{
 	public :
 		string (); //constructeur
-		string (char s);
+		string (char s); //autre constructeur
 
 		char* gettab();//accesseur
-
+		int length();// fonction length
+		
+		
 		//~string(); //destructor
 
 	protected :
