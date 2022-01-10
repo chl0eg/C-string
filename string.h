@@ -1,7 +1,7 @@
 class string{
 	public :
 		string (); //constructeur
-		string (char s); //autre constructeur
+		string (char* s); //autre constructeur
 		string(const string& str); //copy constructeur
 
 		char* gettab();//accesseur
