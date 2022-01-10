@@ -2,7 +2,9 @@
 
 #include <iostream>
 
-ourString::~string(){
+using namespace std;
+
+string::~string(){
   cout<< "string is being deleted" << endl;
 }
 
