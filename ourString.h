@@ -6,7 +6,7 @@ class ourString{
 		char* gettab();//accesseur
 		
 		int getLength(ourString s); //fonction
-		~ourString(); //destructor
+		//~ourString(); //destructor
 		
 	protected :
 		char tab[100];
