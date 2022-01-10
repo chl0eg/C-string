@@ -1,8 +1,8 @@
 #include <iostream>
-#include "ourString.h"
+#include "string.h"
 
 /*************** constructeur de ourString ***************/
-ourString::ourString (){ // ajout constructeur par défaut 
+string::string (){ // ajout constructeur par défaut 
 	tab [0] = 'H';
 	tab [1] = 'e';
 	tab [2] = 'l';
@@ -10,15 +10,20 @@ ourString::ourString (){ // ajout constructeur par défaut
 	tab [4] = 'o';
 	}
 
+	
+//string::string(string s){ //constructeur str donné
+//	;
+//	}
+
 /*************** accesseur ***************/
-char* ourString::gettab(){ //get tab
+char* string::gettab(){ //get tab
 	return this->tab;
 	}
 
 
 /*************** main test ***************/
 int main(){
-	ourString s;
+	string s;
 	std::cout << s.gettab() << std::endl;
 	}
 
