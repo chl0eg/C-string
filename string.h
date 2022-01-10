@@ -5,16 +5,16 @@ class string{
 		string(const string& str); //copy constructeur
 
 		char* gettab();//accesseur
-		int getlength();//accesseur
+		int* getlength();//accesseur
 		
 		int length();// fonction length
 
 
 
-		~string(); //destructor
+		//~string(); //destructor
 
 
 	protected :
 		char tab[100];
-		int length;
+		int len;
 };
