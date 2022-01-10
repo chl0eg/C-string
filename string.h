@@ -5,9 +5,8 @@ class string{
 		string(const string& str); //copy constructeur
 
 		char* gettab();//accesseur
+		int length() const;// fonction length
 		int getlength();//accesseur
-		
-		int length();// fonction length
 
 
 
