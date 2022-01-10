@@ -21,6 +21,16 @@ char* string::gettab(){ //get tab
 	}
 
 
+/*************** fonction ***************/
+
+int string::length (){
+	int l=0;
+	
+	return (l);
+	}
+
+
+
 /*************** main test ***************/
 int main(){
 	string s;
