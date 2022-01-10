@@ -5,9 +5,9 @@ class string{
 
 		char* gettab();//accesseur
 		int length();// fonction length
-		
-		
-		//~string(); //destructor
+
+
+		~string(); //destructor
 
 	protected :
 		char tab[100];
