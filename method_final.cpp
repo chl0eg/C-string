@@ -9,7 +9,7 @@ string::string (){ // ajout constructeur par défaut
 	tab [3] = 'l';
 	tab [4] = 'o';
 	}
-	
+
 
 
 /*************** accesseur ***************/
