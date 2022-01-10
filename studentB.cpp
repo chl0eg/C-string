@@ -11,8 +11,11 @@ string::string (){ // ajout constructeur par défaut
 	}
 
 	
-//string::string(string s){ //constructeur str donné
-//	;
+//string::string(char* s){ //constructeur str donné
+//	str= char[];
+//	for (int i; i<s.length(); i++){
+//		str[i]=s[i];
+//		}
 //	}
 
 /*************** accesseur ***************/
@@ -41,6 +44,8 @@ int main(){
 	string s;
 	std::cout << s.gettab() << std::endl;
 	std::cout << s.length() << std::endl;
+	//char my_tab[]="Bonjour";
+	//string s2(char my_tab[]);
 	}
 
 
