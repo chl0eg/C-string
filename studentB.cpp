@@ -25,7 +25,12 @@ char* string::gettab(){ //get tab
 
 int string::length (){
 	int l=0;
-	
+	int i = 0;
+	while (tab[i]!='\0'){
+		i++;
+		l++;
+		} 
+		
 	return (l);
 	}
 
@@ -35,6 +40,7 @@ int string::length (){
 int main(){
 	string s;
 	std::cout << s.gettab() << std::endl;
+	std::cout << s.length() << std::endl;
 	}
 
 
