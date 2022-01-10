@@ -1,11 +1,11 @@
 class ourString{
 	public :
 		ourString (); //constructeur
-		ourString (char s)
+		ourString (char s);
 
-		int getLength(ourString s) //fonction
+		int getLength(ourString s); //fonction
 		~ourString(); //destructor
 		
 	protected :
-		char tab[100] 
+		char tab[100];
 }
