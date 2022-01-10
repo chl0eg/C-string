@@ -5,6 +5,8 @@ class string{
 		string(const string& str); //copy constructeur
 
 		char* gettab();//accesseur
+		int getlength();//accesseur
+		
 		int length();// fonction length
 
 
@@ -12,4 +14,5 @@ class string{
 
 	protected :
 		char tab[100];
+		int length;
 };
