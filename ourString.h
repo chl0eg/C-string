@@ -3,6 +3,9 @@ class ourString{
 		ourString (); //constructeur
 		ourString (char s)
 
-		int getLength(ourString s)
-    ~ourString(); //destructor
+		int getLength(ourString s) //fonction
+		~ourString(); //destructor
+		
+	protected :
+		char tab[100] 
 }
