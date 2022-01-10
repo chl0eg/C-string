@@ -10,8 +10,8 @@ int main(){
   return 0;
 }
 
-string::string(const string& str){
-  for(int i=0, i<=str.length(), i++){
+string::string(const string& str){ // copy constructeur
+  for(int i=0; i<=str.length(); i++){
     tab[i] = str.tab[i];
   }
 }
