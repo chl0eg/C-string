@@ -1,13 +1,14 @@
 class string{
 	public :
 		string (); //constructeur
-		string (char s);
-		
+		string (char s); //autre constructeur
+
 		char* gettab();//accesseur
+		int length();// fonction length
 		
-		int getLength(ourString s); //fonction
+		
 		//~string(); //destructor
-		
+
 	protected :
 		char tab[100];
 };
