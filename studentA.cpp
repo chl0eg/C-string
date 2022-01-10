@@ -1,4 +1,4 @@
-#include "ourString.h"
+#include "string.h"
 #include <iostream>
 
 int main(){
@@ -10,6 +10,8 @@ int main(){
   return 0;
 }
 
-string::string(const string&){
-  tab = string.tab;
+string::string(const string& str){
+  for(int i=0, i<=str.length(), i++){
+    tab[i] = str.tab[i];
+  }
 }
