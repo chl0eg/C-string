@@ -3,8 +3,9 @@ class string{
 		string (); //constructeur
 		string (char s);
 
-		int getLength(string s); //fonction
-		~string(); //destructor
+		char* gettab();//accesseur
+
+		//~string(); //destructor
 
 	protected :
 		char tab[100];
