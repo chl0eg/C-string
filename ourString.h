@@ -8,4 +8,4 @@ class ourString{
 		
 	protected :
 		char tab[100];
-}
+};
