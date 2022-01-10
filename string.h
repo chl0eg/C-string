@@ -1,10 +1,12 @@
 class string{
 	public :
 		string (); //constructeur
-		string (char s);
-		string(const string& str);
+		string (char s); //autre constructeur
+		string(const string& str); //copy constructeur
 
 		char* gettab();//accesseur
+		int length();// fonction length
+
 
 		//~string(); //destructor
 
