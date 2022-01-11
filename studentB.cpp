@@ -39,16 +39,18 @@ int string::getlength(){ //get length
 
 /*************** fonction ***************/
 
-//int string::length (){
-//	return this -> len;
-//	}
+int string::length (){
+	return this -> len;
+	}
 
 
 /*************** main test ***************/
 int main(){
 	string s;
 	std::cout << s.gettab() << std::endl;
-	std::cout << s.getlength() << std::endl;
+	std::cout << "s.getlength() : " <<s.getlength() << std::endl;
+	int l1 = s.length();
+	std::cout << "l1 : " <<l1 << std::endl;
 	char my_tab[]="Bonjour";
 	string s2(my_tab);
 	//std::cout << s2.print() << std::endl;
