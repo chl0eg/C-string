@@ -32,27 +32,26 @@ char* string::gettab(){ //get tab
 	return this->tab;
 	}
 
-//char* string::getlength(){ //get length
-//	return this -> len;
-//	}
+int string::getlength(){ //get length
+	return this -> len;
+	}
 
 
 /*************** fonction ***************/
 
 //int string::length (){
 //	return this -> len;
-//g++	}
+//	}
 
-char*
 
 /*************** main test ***************/
 int main(){
 	string s;
 	std::cout << s.gettab() << std::endl;
-	//std::cout << s.length() << std::endl;
+	std::cout << s.getlength() << std::endl;
 	char my_tab[]="Bonjour";
 	string s2(my_tab);
-	std::cout << s2.print() << std::endl;
+	//std::cout << s2.print() << std::endl;
 	}
 
 
