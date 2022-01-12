@@ -8,6 +8,7 @@ class string{
                 int getlength();//accesseur
 
                 int length();// fonction length
+                void print();//fonction print
 
 
 
@@ -18,4 +19,3 @@ class string{
                 char tab[100];
                 int len;
 };
-
