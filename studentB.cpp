@@ -32,6 +32,10 @@ int string::getlength(){ //get length
 	return this -> len;
 	}
 
+char* string::gettab(){ //get tab pas utiliser pour string vide
+	return this->tab;
+}
+
 
 /*************** fonction ***************/
 
@@ -42,8 +46,7 @@ int string::length() const{
 	else{
 		return this -> len;
 	}
-
-	}
+}
 
 
 void string::print(){
@@ -120,6 +123,17 @@ si size_t < longueur du string, on cut tab
 
 }
 
+string& string::string operator = (const string& str){
+	if(this->len!=0){
+		delete[] tab;
+	}
+	len=str.len;
+	tab=new char[len+1];
+	memcpy(tab,str.tab,len+1);
+	return *this;
+}
+
+
 /*************** main test ***************/
 int main(){
 	// test déclaration par défaut et getter
@@ -159,5 +173,9 @@ int main(){
 	s2.resize(5);
 	s2.print();
 	s2.resize(110);
+
+	string s3=s2;
+	s2.print();
+	s3.print();
 
 	}
