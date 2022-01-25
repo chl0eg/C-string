@@ -13,6 +13,7 @@ class string{
                 int length() const;// fonction length
                 void print();//fonction print
                 int max_size(); // fonction max_size donne size max que peut prendre un string
+                void resize(int size_t)
                 void resize(int size_t,char c); // fonction resize
 
 
