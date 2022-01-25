@@ -46,6 +46,10 @@ int string::length() const{
 	return this -> len;
 	}
 
+int string::size() const{
+	return this -> len;
+	}
+
 
 void string::print(){
 	std::cout << this->tab <<std::endl;
@@ -54,6 +58,66 @@ void string::print(){
 
 int string::max_size(){
 	return 100;
+}
+
+void string::resize(int size_t){
+/*
+si size_t > longueur du string, on complètre tab avec le char c donné
+si size_t < longueur du string, on cut tab
+*/
+
+	if (size_t<(this->len)){
+		std::cout << "short" << std::endl;
+		this->len=size_t;
+		this->tab[this->len]='\0';
+		memcpy(this->tab,this->tab,size_t);
+	}
+
+	if (size_t>this->len){
+		std::cout << "long" << std::endl;
+
+		for(int i = this->len; i<size_t;i++){
+			this->tab[i]='\0';
+		}
+		this->len=size_t;
+		this->tab[this->len]='\0';
+		memcpy(this->tab,this->tab,size_t);
+	}
+
+	if(size_t>100){
+		std::cout << "! string trop grand !" << std::endl;
+	}
+
+}
+
+void string::resize(int size_t,char c){
+/*
+si size_t > longueur du string, on complètre tab avec le char c donné
+si size_t < longueur du string, on cut tab
+*/
+
+	if (size_t<(this->len)){
+		std::cout << "short" << std::endl;
+		this->len=size_t;
+		this->tab[this->len]='\0';
+		memcpy(this->tab,this->tab,size_t);
+	}
+
+	if (size_t>this->len){
+		std::cout << "long" << std::endl;
+
+		for(int i = this->len; i<size_t;i++){
+			this->tab[i]=c;
+		}
+		this->len=size_t;
+		this->tab[this->len]='\0';
+		memcpy(this->tab,this->tab,size_t);
+	}
+
+	if(size_t>100){
+		std::cout << "! string trop grand !" << std::endl;
+	}
+
 }
 
 string::~string(){

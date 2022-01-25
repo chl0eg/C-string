@@ -11,6 +11,7 @@ class string{
                 int getlength();//accesseur
 
                 int length() const;// fonction length
+                int size() const;// fonction length
                 void print();//fonction print
                 int max_size(); // fonction max_size donne size max que peut prendre un string
                 void resize(int size_t);
