@@ -6,7 +6,7 @@ using std::cout;
 using std::endl;
 
 string::~string(){
-  cout<< "string is being deleted" << endl;
+    cout<< "string is being deleted" << endl;
 }
 
 /*test*/
