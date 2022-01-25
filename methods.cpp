@@ -4,33 +4,25 @@
 
 /*************** constructeur de string ***************/
 string::string (){ // ajout constructeur par défaut
-	tab=new char[5];
-	tab [0] = 'H';
-	tab [1] = 'e';
-	tab [2] = 'l';
-	tab [3] = 'l';
-	tab [4] = 'o';
-	tab [5] = '\0';
-	len=5;
+	tab=nullptr;
 	}
 
 
 
 string::string(char* s){ //constructeur str donné
 	int l=0;
-	int i = 0;
-	while (s[i]!='\0'){
-		i++;
+	while (s[l]!='\0'){
 		l++;
 		}
 	len=l;
-
 	tab = new char[10];
 	memcpy(tab,s,len);
 	tab[len]='\0';
 	}
 
+
 /*************** accesseur ***************/
+
 int string::getlength(){ //get length
 	return this -> len;
 	}
@@ -39,16 +31,23 @@ int string::getlength(){ //get length
 /*************** fonction ***************/
 
 int string::length() const{
-	return this -> len;
+	if (tab==nullptr){
+		return 0;
+	}
+	else{
+		return this -> len;
 	}
 
-int string::size() const{
-	return this -> len;
 	}
 
 
 void string::print(){
-	std::cout << this->tab <<std::endl;
+	if (tab==nullptr){
+		std::cout << "votre string est vide" <<std::endl;
+	}
+	else{
+		std::cout << this->tab <<std::endl;
+	}
 }
 
 
@@ -117,8 +116,33 @@ si size_t < longueur du string, on cut tab
 }
 
 string::~string(){
+    delete tab;
+    std::cout<< "string is being deleted" << std::endl;
+}
+
+bool string::empty() const{
+	return (len == 0);
+}
+
+string& string::operator = (const char* s){
+
+	if (this->len != 0)
+		delete [] tab;
+
+    int l = 0;
+	while (s[l]!='\0'){
+		l++;
+	}
+
+	len = l;
+	tab = new char[len+1];
+	memcpy(tab,s,len);
+	return *this;
+}
+
+/*string::~string(){
   if(tab)
     delete [] tab;
 
   std::cout<< "string is being deleted" << std::endl;
-}
+}*/
