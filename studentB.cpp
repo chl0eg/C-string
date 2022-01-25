@@ -4,14 +4,7 @@
 
 /*************** constructeur de string ***************/
 string::string (){ // ajout constructeur par défaut
-	tab=new char[5];
-	tab [0] = 'H';
-	tab [1] = 'e';
-	tab [2] = 'l';
-	tab [3] = 'l';
-	tab [4] = 'o';
-	tab [5] = '\0';
-	len=5;
+	tab=nullptr;
 	}
 
 
@@ -34,9 +27,6 @@ string::~string(){
 
 
 /*************** accesseur ***************/
-char* string::gettab(){ //get tab
-	return this->tab;
-	}
 
 int string::getlength(){ //get length
 	return this -> len;
@@ -46,12 +36,23 @@ int string::getlength(){ //get length
 /*************** fonction ***************/
 
 int string::length() const{
-	return this -> len;
+	if (tab==nullptr){
+		return 0;
+	}
+	else{
+		return this -> len;
+	}
+
 	}
 
 
 void string::print(){
-	std::cout << this->tab <<std::endl;
+	if (tab==nullptr){
+		std::cout << "votre string est vide" <<std::endl;
+	}
+	else{
+		std::cout << this->tab <<std::endl;
+	}
 }
 
 
@@ -123,7 +124,6 @@ si size_t < longueur du string, on cut tab
 int main(){
 	// test déclaration par défaut et getter
 	string s;
-	std::cout << "s gettab : " <<s.gettab() << std::endl;
 	s.print();
 	std::cout << "s.getlength() : " <<s.getlength() << std::endl;
 	int l1 = s.length();
@@ -138,7 +138,6 @@ int main(){
 */
 	char my_tab[100]={'B','o','n','j','o','u','r','\0'}; // déclaration ok
 	string s2(my_tab);
-	std::cout << "s2 " << s2.gettab() << std::endl;
 	s2.print();
 
 
