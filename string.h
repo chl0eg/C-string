@@ -3,6 +3,8 @@ class string{
                 string (); //constructeur
                 string (char* s); //autre constructeur
                 string(const string& str); //copy constructeur
+                ~string(); //destructor
+
 
                 char* gettab();//accesseur
                 int getlength();//accesseur
@@ -14,7 +16,6 @@ class string{
 
 
 
-                //~string(); //destructor
 
 
         protected :
