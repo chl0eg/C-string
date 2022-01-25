@@ -18,6 +18,8 @@ class string{
 
                 bool empty() const;
 
+                //string& operator = (const string&);
+                //string& operator + (const string&, char);
 
 
         protected :
