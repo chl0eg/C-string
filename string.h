@@ -22,10 +22,12 @@ class string{
                 string& operator = (const string&);
                 string& operator = (const char* s);
                 string& operator = (char c);
-                //string& operator + (const string&, char);
+                string& operator += (char c);
 
 
         protected :
                 char* tab;
                 int len;
 };
+
+string& operator + (const string&, char);
