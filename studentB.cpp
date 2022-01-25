@@ -123,8 +123,8 @@ si size_t < longueur du string, on cut tab
 
 }
 
-string& string::string operator = (const string& str){
-	if(this->len!=0){
+string& string::operator = (const string& str){
+	if(len!=0){
 		delete[] tab;
 	}
 	len=str.len;
@@ -133,15 +133,33 @@ string& string::string operator = (const string& str){
 	return *this;
 }
 
+string& string::operator += (char c){
+	len+=1;
+	char* nc= new char[len+1];
+	nc=tab;
+	nc[len-1]=c;
+	memcpy(tab,nc,len);
+	return *this;
+}
+
+
+string& operator + (const string& str, char c){
+	string new_str(str);
+	new_str += c;
+	return new_str;
+}
+
 
 /*************** main test ***************/
 int main(){
 	// test déclaration par défaut et getter
+	/*
 	string s;
 	s.print();
 	std::cout << "s.getlength() : " <<s.getlength() << std::endl;
 	int l1 = s.length();
 	std::cout << "l1 : " <<l1 << std::endl;
+	*/
 
 	// test 2e constructeur avec print
 	/*char my_tab2 [4];
@@ -156,7 +174,7 @@ int main(){
 
 
 	//test max_size
-	std::cout << "s2.max_size() : " << s2.max_size() << std::endl;
+	//std::cout << "s2.max_size() : " << s2.max_size() << std::endl;
 
 	// test resize avec size et char
 	/*
@@ -168,14 +186,33 @@ int main(){
 	*/
 
 	// test resize avec size
+	/*
 	s2.resize(10);
 	s2.print();
 	s2.resize(5);
 	s2.print();
 	s2.resize(110);
+	*/
 
-	string s3=s2;
-	s2.print();
+	// Test opérateur
+
+	char my_tab2[100]={'H','e','y','\0'}; // déclaration ok
+	string s3(my_tab2);
+	std::cout << "s3: "  << std::endl;
 	s3.print();
+	std::cout << "s3 avec a: "  << std::endl;
+	s3+='a';
+	s3.print();
+	std::cout << s3.getlength() << std::endl;
+
+	string s4;
+	s4=s2;
+	std::cout << "s2: "  << std::endl;
+	s2.print();
+	std::cout << "s4 copy de s2: " << std::endl;
+	s4.print();
+
+	string s5;
+	s5=s2+s3;
 
 	}
