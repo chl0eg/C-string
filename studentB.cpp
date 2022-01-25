@@ -45,7 +45,7 @@ int string::getlength(){ //get length
 
 /*************** fonction ***************/
 
-int string::length (){
+int string::length() const{
 	return this -> len;
 	}
 
