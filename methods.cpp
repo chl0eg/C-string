@@ -117,8 +117,8 @@ si size_t < longueur du string, on cut tab
 }
 
 string::~string(){
-  if(tab){
-    delete tab;
-  }
+  if(tab)
+    delete [] tab;
+
   std::cout<< "string is being deleted" << std::endl;
 }

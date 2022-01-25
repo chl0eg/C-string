@@ -10,6 +10,9 @@ int main(){
   string second(first);
   second.print();
   std::cout<<(void*) second.c_str()<<std::endl;
+  second.clear();
+  second.print();
+  std::cout<<second.length()<<std::endl;
 
   char my_tab[100]={'B','o','n','j','o','u','r','\0'}; // déclaration ok
 	string s2(my_tab);
@@ -34,4 +37,11 @@ string::string(const string& str){ // copy constructeur
 
 const char* string::c_str(){ // c_str()
   return tab;
+}
+
+void string::clear(){
+  len = 0;
+  //delete [] tab;
+  tab = new char[1];
+  tab[0] = '\0';
 }
