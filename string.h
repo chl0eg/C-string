@@ -18,6 +18,6 @@ class string{
 
 
         protected :
-                char tab[100];
+                char *tab;
                 int len;
 };
