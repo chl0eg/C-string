@@ -30,4 +30,4 @@ class string{
                 int len;
 };
 
-string& operator + (const string&, char);
+string operator + (const string&, char);
