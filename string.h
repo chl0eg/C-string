@@ -18,4 +18,3 @@ class string{
                 char tab[100];
                 int len;
 };
-
