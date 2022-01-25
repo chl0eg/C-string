@@ -39,6 +39,8 @@ bool string::empty() const{
 	return (len == 0);
 }
 
+
+
 void string::resize(int size_t){
 /*
 si size_t > longueur du string, on complètre tab avec le char c donné
@@ -69,14 +71,38 @@ si size_t < longueur du string, on cut tab
 
 }
 
+string& string::operator = (const char* s){
+
+	if (this->len != 0)
+		delete [] tab;
+
+    int l = 0;
+	while (s[l]!='\0'){
+		l++;
+	}
+
+	len = l;
+	tab = new char[len+1];
+	memcpy(tab,s,len);
+	return *this;
+}
+
+void string::print(){
+	std::cout << this->tab <<std::endl;
+}
+
 
 int main(){
     char my_tab[100]={'B','o','n','j','o','u','r','\0'}; // déclaration ok
     string s2(my_tab);
-	s2.resize(0);
+	/*s2.resize(0);*/
 	cout<<"is empty?"<<s2.empty()<< endl;
 
-    cout<<my_tab<< endl;
+    /*cout<<my_tab<< endl;*/
+
+    s2.print();
+	s2="yes";
+	s2.print();
 
 	}
 

@@ -19,6 +19,7 @@ class string{
                 bool empty() const;
 
                 string& operator = (const string&);
+                string& operator = (const char* s);
                 //string& operator + (const string&, char);
 
 
