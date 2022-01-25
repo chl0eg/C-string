@@ -16,6 +16,8 @@ class string{
                 void resize(int size_t);
                 void resize(int size_t,char c); // fonction resize
 
+                bool empty() const;
+
 
 
         protected :

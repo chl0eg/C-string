@@ -35,10 +35,46 @@ string::~string(){
 }
 
 /*test*/
+bool string::empty() const{
+	return (len == 0);
+}
+
+void string::resize(int size_t){
+/*
+si size_t > longueur du string, on complètre tab avec le char c donné
+si size_t < longueur du string, on cut tab
+*/
+
+	if (size_t<(this->len)){
+		std::cout << "short" << std::endl;
+		this->len=size_t;
+		this->tab[this->len]='\0';
+		memcpy(this->tab,this->tab,size_t);
+	}
+
+	if (size_t>this->len){
+		std::cout << "long" << std::endl;
+
+		for(int i = this->len; i<size_t;i++){
+			this->tab[i]='\0';
+		}
+		this->len=size_t;
+		this->tab[this->len]='\0';
+		memcpy(this->tab,this->tab,size_t);
+	}
+
+	if(size_t>100){
+		std::cout << "! string trop grand !" << std::endl;
+	}
+
+}
+
 
 int main(){
     char my_tab[100]={'B','o','n','j','o','u','r','\0'}; // déclaration ok
     string s2(my_tab);
+	s2.resize(0);
+	cout<<"is empty?"<<s2.empty()<< endl;
 
     cout<<my_tab<< endl;
 
