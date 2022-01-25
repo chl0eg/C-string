@@ -21,6 +21,7 @@ class string{
 
                 string& operator = (const string&);
                 string& operator = (const char* s);
+                string& operator = (char c);
                 //string& operator + (const string&, char);
 
 

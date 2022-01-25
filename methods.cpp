@@ -27,6 +27,9 @@ int string::getlength(){ //get length
 	return this -> len;
 	}
 
+char* string::gettab(){ //get tab pas utiliser pour string vide
+	return this->tab;
+}
 
 /*************** fonction ***************/
 
@@ -139,10 +142,3 @@ string& string::operator = (const char* s){
 	memcpy(tab,s,len);
 	return *this;
 }
-
-/*string::~string(){
-  if(tab)
-    delete [] tab;
-
-  std::cout<< "string is being deleted" << std::endl;
-}*/

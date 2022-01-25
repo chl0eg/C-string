@@ -28,6 +28,9 @@ int main(){
 	s2.print();
 	s2.resize(110);
 
+  s2 = 't';
+  s2.print();
+
 
   return 0;
 }
@@ -56,4 +59,18 @@ void string::clear(){
   //delete [] tab;
   tab = new char[1];
   tab[0] = '\0';
+}
+
+string& string::operator = (char c){
+
+	if (this->len != 1){
+		delete [] tab;
+  }
+
+  len = 1;
+	tab = new char[len+1];
+  tab[0] = c;
+  tab[len] = '\0';
+
+  return *this;
 }
