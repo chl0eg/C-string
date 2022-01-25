@@ -8,6 +8,7 @@ class string{
 
                 const char* c_str();
                 int getlength();//accesseur
+                char* gettab();//accesseur
 
                 int length() const;// fonction length
                 int size() const;// fonction length
