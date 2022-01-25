@@ -31,10 +31,6 @@ string::string(char* s){ //constructeur str donné
 	}
 
 /*************** accesseur ***************/
-char* string::gettab(){ //get tab
-	return this->tab;
-	}
-
 int string::getlength(){ //get length
 	return this -> len;
 	}
