@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring> //pour memcpy
 #include "string.h"
 
 /*************** constructeur de string ***************/
@@ -17,20 +18,20 @@ string::string (){ // ajout constructeur par défaut
 
 string::string(char* s){ //constructeur str donné
 	int l=0;
-	int i = 0;
-	while (s[i]!='\0'){
-		i++;
+	while (s[l]!='\0'){
 		l++;
 		}
 	len=l;
-
-	tab = new char[len];
-	tab = s;
-
+	tab = new char[10];
+	memcpy(tab,s,len);
 	tab[len]='\0';
-
-
 	}
+
+string::~string(){
+	delete tab;
+	std::cout<< "string is being deleted" << std::endl;
+}
+
 
 /*************** accesseur ***************/
 char* string::gettab(){ //get tab
@@ -59,7 +60,29 @@ int string::max_size(){
 }
 
 
+void string::resize(int size_t,char c){
+/*
+si size_t > longueur du string, on complètre tab avec le char c donné
+si size_t < longueur du string, on cut tab
+*/
 
+	if (size_t<(this->len)){
+		//std::cout << "short" << std::endl;
+		for(int i=size_t; i<this->len; i++){
+			this->tab[i]='\0';// << std::endl;
+		}
+	}
+
+	if (size_t>this->len){
+		//std::cout << "long" << std::endl;
+
+	}
+
+	if(size_t>100){
+		std::cout << "! string trop grand !" << std::endl;
+	}
+
+}
 
 /*************** main test ***************/
 int main(){
