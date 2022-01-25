@@ -143,9 +143,10 @@ string& string::operator += (char c){
 }
 
 
-string& operator + (const string& str, char c){
-	string new_str(str);
-	new_str += c;
+string operator + (const string& str, char c){
+	string new_str;
+	new_str=str;
+	new_str+= c;
 	return new_str;
 }
 
@@ -213,6 +214,8 @@ int main(){
 	s4.print();
 
 	string s5;
-	s5=s2+s3;
+	s5=s2+'a';
+	std::cout << "s5 = s2 avec a: "  << std::endl;
+	s5.print();
 
 	}
