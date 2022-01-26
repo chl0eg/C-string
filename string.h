@@ -32,7 +32,7 @@ class string{
         protected :
                 char* tab;
                 int len;
-                size_t capacity;
+                size_t capacity_;
 };
 
 string operator + (const string&, char);
