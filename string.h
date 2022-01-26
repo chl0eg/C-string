@@ -1,8 +1,9 @@
+#include <stddef.h> //pour size_t
 class string{
         public :
                 string (); //constructeur
-                string (char* s); //autre constructeur
-                string(const string& str); //copy constructeur
+                string (const char* s); //autre constructeur
+                string (const string& str); //copy constructeur
                 ~string(); //destructor
 
 
@@ -14,8 +15,8 @@ class string{
                 int size() const;// fonction length
                 void print();//fonction print
                 int max_size(); // fonction max_size donne size max que peut prendre un string
-                void resize(int size_t);
-                void resize(int size_t,char c); // fonction resize
+                void resize(size_t st);
+                void resize(size_t st,char c); // fonction resize
                 void clear();
                 bool empty() const;
 
