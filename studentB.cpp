@@ -13,12 +13,12 @@ string::string(char* s){ //constructeur str donné
 	int l=0;
 	while (s[l]!='\0'){
 		l++;
-		}
+	}
 	len=l;
-	tab = new char[10];
+	tab = new char[len];
 	memcpy(tab,s,len);
 	tab[len]='\0';
-	}
+}
 
 string::~string(){
 	delete tab;
@@ -30,7 +30,7 @@ string::~string(){
 
 int string::getlength(){ //get length
 	return this -> len;
-	}
+}
 
 char* string::gettab(){ //get tab pas utiliser pour string vide
 	return this->tab;
@@ -70,20 +70,19 @@ si size_t < longueur du string, on cut tab
 */
 
 	if (size_t<(this->len)){
-		std::cout << "short" << std::endl;
+		//std::cout << "short" << std::endl;
 		this->len=size_t;
 		this->tab[this->len]='\0';
 		memcpy(this->tab,this->tab,size_t);
 	}
 
 	if (size_t>this->len){
-		std::cout << "long" << std::endl;
+		//std::cout << "long" << std::endl;
 
 		for(int i = this->len; i<size_t;i++){
 			this->tab[i]='\0';
 		}
-		this->len=size_t;
-		this->tab[this->len]='\0';
+		this->tab[size_t]='\0';
 		memcpy(this->tab,this->tab,size_t);
 	}
 
@@ -100,14 +99,14 @@ si size_t < longueur du string, on cut tab
 */
 
 	if (size_t<(this->len)){
-		std::cout << "short" << std::endl;
+		//std::cout << "short" << std::endl;
 		this->len=size_t;
 		this->tab[this->len]='\0';
 		memcpy(this->tab,this->tab,size_t);
 	}
 
 	if (size_t>this->len){
-		std::cout << "long" << std::endl;
+		//std::cout << "long" << std::endl;
 
 		for(int i = this->len; i<size_t;i++){
 			this->tab[i]=c;
@@ -123,6 +122,8 @@ si size_t < longueur du string, on cut tab
 
 }
 
+
+/*************** fonction ***************/
 string& string::operator = (const string& str){
 	if(len!=0){
 		delete[] tab;
@@ -149,73 +150,3 @@ string operator + (const string& str, char c){
 	new_str+= c;
 	return new_str;
 }
-
-
-/*************** main test ***************/
-int main(){
-	// test déclaration par défaut et getter
-	/*
-	string s;
-	s.print();
-	std::cout << "s.getlength() : " <<s.getlength() << std::endl;
-	int l1 = s.length();
-	std::cout << "l1 : " <<l1 << std::endl;
-	*/
-
-	// test 2e constructeur avec print
-	/*char my_tab2 [4];
-	my_tab2[0]='H';
-	my_tab2[1]='e';
-	my_tab2[2]='y';
-	my_tab2[3]='\0'; //déclaration ok
-*/
-	char my_tab[100]={'B','o','n','j','o','u','r','\0'}; // déclaration ok
-	string s2(my_tab);
-	s2.print();
-
-
-	//test max_size
-	//std::cout << "s2.max_size() : " << s2.max_size() << std::endl;
-
-	// test resize avec size et char
-	/*
-	s2.resize(10,'!');
-	s2.print();
-	s2.resize(5,'!');
-	s2.print();
-	s2.resize(110,'!');
-	*/
-
-	// test resize avec size
-	/*
-	s2.resize(10);
-	s2.print();
-	s2.resize(5);
-	s2.print();
-	s2.resize(110);
-	*/
-
-	// Test opérateur
-
-	char my_tab2[100]={'H','e','y','\0'}; // déclaration ok
-	string s3(my_tab2);
-	std::cout << "s3: "  << std::endl;
-	s3.print();
-	std::cout << "s3 avec a: "  << std::endl;
-	s3+='a';
-	s3.print();
-	std::cout << s3.getlength() << std::endl;
-
-	string s4;
-	s4=s2;
-	std::cout << "s2: "  << std::endl;
-	s2.print();
-	std::cout << "s4 copy de s2: " << std::endl;
-	s4.print();
-
-	string s5;
-	s5=s2+'a';
-	std::cout << "s5 = s2 avec a: "  << std::endl;
-	s5.print();
-
-	}
