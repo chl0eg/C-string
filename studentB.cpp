@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring> //pour memcpy
+#include <stddef.h> //pour size_t
 #include "string.h"
 
 /*************** constructeur de string ***************/
@@ -18,6 +19,7 @@ string::string(const char* s){ //constructeur str donné
 	tab = new char[len];
 	memcpy(tab,s,len);
 	tab[len]='\0';
+	capacity=len;
 }
 
 string::~string(){
@@ -63,60 +65,64 @@ int string::max_size(){
 	return 100;
 }
 
-void string::resize(int size_t){
+void string::resize(size_t st){
 /*
 si size_t > longueur du string, on complètre tab avec le char c donné
 si size_t < longueur du string, on cut tab
 */
 
-	if (size_t<(this->len)){
+	if (st<(this->len)){
 		//std::cout << "short" << std::endl;
-		this->len=size_t;
+		this->len=st;
 		this->tab[this->len]='\0';
-		memcpy(this->tab,this->tab,size_t);
+		memcpy(this->tab,this->tab,st);
+		this->capacity=st;
 	}
 
-	if (size_t>this->len){
+	if (st>this->len){
 		//std::cout << "long" << std::endl;
 
-		for(int i = this->len; i<size_t;i++){
+		for(int i = this->len; i<st;i++){
 			this->tab[i]='\0';
 		}
-		this->tab[size_t]='\0';
-		memcpy(this->tab,this->tab,size_t);
+		this->tab[st]='\0';
+		memcpy(this->tab,this->tab,st);
+		this->capacity=st;
 	}
 
-	if(size_t>100){
+	if(st>100){
 		std::cout << "! string trop grand !" << std::endl;
 	}
 
 }
 
-void string::resize(int size_t,char c){
+void string::resize(size_t st,char c){
 /*
 si size_t > longueur du string, on complètre tab avec le char c donné
 si size_t < longueur du string, on cut tab
 */
 
-	if (size_t<(this->len)){
+	if (st<(this->len)){
 		//std::cout << "short" << std::endl;
-		this->len=size_t;
+		this->len=st;
 		this->tab[this->len]='\0';
-		memcpy(this->tab,this->tab,size_t);
+		memcpy(this->tab,this->tab,st);
+		this->capacity=st;
 	}
 
-	if (size_t>this->len){
+	if (st>this->len){
 		//std::cout << "long" << std::endl;
 
-		for(int i = this->len; i<size_t;i++){
+		for(int i = this->len; i<st;i++){
 			this->tab[i]=c;
 		}
-		this->len=size_t;
+		this->len=st;
 		this->tab[this->len]='\0';
-		memcpy(this->tab,this->tab,size_t);
+		memcpy(this->tab,this->tab,st);
+		this->capacity=st;
 	}
 
-	if(size_t>100){
+	if(st>100){
 		std::cout << "! string trop grand !" << std::endl;
 	}
 
@@ -131,7 +137,7 @@ string& string::operator = (const string& str){
 	len=str.len;
 	tab=new char[len+1];
 	memcpy(tab,str.tab,len+1);
-	//delete[] tab;
+	capacity=len;
 	return *this;
 }
 
@@ -141,7 +147,7 @@ string& string::operator += (char c){
 	nc=tab;
 	nc[len-1]=c;
 	memcpy(tab,nc,len);
-	//delete nc;
+	capacity=len;
 	return *this;
 }
 
