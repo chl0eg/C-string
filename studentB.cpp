@@ -19,12 +19,7 @@ string::string(const char* s){ //constructeur str donné
 	tab = new char[len];
 	memcpy(tab,s,len);
 	tab[len]='\0';
-	capacity=len;
-}
-
-string::~string(){
-	delete tab;
-	std::cout<< "string is being deleted" << std::endl;
+	capacity_=len;
 }
 
 
@@ -76,7 +71,7 @@ si size_t < longueur du string, on cut tab
 		this->len=st;
 		this->tab[this->len]='\0';
 		memcpy(this->tab,this->tab,st);
-		this->capacity=st;
+		this->capacity_=st;
 	}
 
 	if (st>this->len){
@@ -87,7 +82,7 @@ si size_t < longueur du string, on cut tab
 		}
 		this->tab[st]='\0';
 		memcpy(this->tab,this->tab,st);
-		this->capacity=st;
+		this->capacity_=st;
 	}
 
 	if(st>100){
@@ -107,7 +102,7 @@ si size_t < longueur du string, on cut tab
 		this->len=st;
 		this->tab[this->len]='\0';
 		memcpy(this->tab,this->tab,st);
-		this->capacity=st;
+		this->capacity_=st;
 	}
 
 	if (st>this->len){
@@ -119,7 +114,7 @@ si size_t < longueur du string, on cut tab
 		this->len=st;
 		this->tab[this->len]='\0';
 		memcpy(this->tab,this->tab,st);
-		this->capacity=st;
+		this->capacity_=st;
 	}
 
 	if(st>100){
@@ -137,7 +132,7 @@ string& string::operator = (const string& str){
 	len=str.len;
 	tab=new char[len+1];
 	memcpy(tab,str.tab,len+1);
-	capacity=len;
+	capacity_=len;
 	return *this;
 }
 
@@ -147,7 +142,7 @@ string& string::operator += (char c){
 	nc=tab;
 	nc[len-1]=c;
 	memcpy(tab,nc,len);
-	capacity=len;
+	capacity_=len;
 	return *this;
 }
 
@@ -157,4 +152,29 @@ string operator + (const string& str, char c){
 	new_str=str;
 	new_str+= c;
 	return new_str;
+}
+//*********DANLIN**********
+string::~string(){
+		delete tab;
+    std::cout<< "string is being deleted" << std::endl;
+}
+
+bool string::empty() const{
+	return (len == 0);
+}
+
+string& string::operator = (const char* s){
+
+	if (this->len != 0)
+		delete [] tab;
+
+    int l = 0;
+	while (s[l]!='\0'){
+		l++;
+	}
+
+	len = l;
+	tab = new char[len+1];
+	memcpy(tab,s,len);
+	return *this;
 }

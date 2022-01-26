@@ -1,50 +1,19 @@
 #include "string.h"
 #include <iostream>
+#include <cstring>
 
-int main(){
-  string first;
-  first.print();
-  std::cout<<first.length()<<std::endl;
-  std::cout<<first.size()<<std::endl;
-
-  string second(first);
-  second.print();
-  //std::cout<<(void*) second.c_str()<<std::endl;
-  //std::cout<<second.length()<<std::endl;
-
-  char my_tab[100]={'B','o','n','j','o','u','r','\0'}; // déclaration ok
-	string s2(my_tab);
-	std::cout << "s2 :" << std::endl;
-	s2.print();
-  std::cout<<(void*) s2.c_str()<<std::endl;
-  s2.clear();
-  s2.print();
-  std::cout<<s2.length()<<std::endl;
-  std::cout << "s2.max_size() : " << s2.max_size() << std::endl;
-
-  s2.resize(10);
-	s2.print();
-	s2.resize(5);
-	s2.print();
-	s2.resize(110);
-
-  s2 = 't';
-  s2.print();
-
-
-  return 0;
-}
 
 string::string(const string& str){ // copy constructeur
   len = str.len;
   tab = str.tab;
+  capacity_ = len;
 }
 
 const char* string::c_str(){ // c_str()
   return tab;
 }
 
-int string::size() const{
+int string::size() const{ // size()
 	if (tab==nullptr){
 		return 0;
 	}
@@ -54,14 +23,14 @@ int string::size() const{
 
 	}
 
-void string::clear(){
+void string::clear(){ // clear()
   len = 0;
   //delete [] tab;
-  tab = new char[1];
-  tab[0] = '\0';
+  tab = nullptr;
+  capacity_ = 0;
 }
 
-string& string::operator = (char c){
+string& string::operator = (char c){ // operator = with char
 
 	if (this->len != 1){
 		delete [] tab;
@@ -71,6 +40,32 @@ string& string::operator = (char c){
 	tab = new char[len+1];
   tab[0] = c;
   tab[len] = '\0';
+  capacity_ = len;
 
   return *this;
+}
+
+string& string::operator += (const char* pc){ // operator += used for operator + with char*
+  string pc_str(pc);
+  int nlen = len + pc_str.len;
+
+  char* nt = new char[nlen+1];
+  for(int i=0; i<len; i++){
+      nt[i]=tab[i];
+  }
+	for(int i=0; i<nlen; i++){
+    nt[len+i]=pc[i];
+  }
+  len = nlen;
+  tab = nt;
+  capacity_ = len;
+	memcpy(tab,nt,nlen);
+  //delete [] nt;
+  return *this;
+}
+
+string operator + (const string& strA, const char* pc){ // operator + with char*
+  string new_str = strA;
+  new_str += pc;
+  return new_str;
 }
