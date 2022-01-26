@@ -19,6 +19,8 @@ class string{
                 void resize(size_t st,char c); // fonction resize
                 void clear();
                 bool empty() const;
+                size_t capacity();
+                void reserve(size_t n);
 
                 string& operator = (const string&);
                 string& operator = (const char* s);
@@ -31,7 +33,7 @@ class string{
         protected :
                 char* tab;
                 int len;
-                int capacity;
+                size_t capacity_;
 };
 
 string operator + (const string&, char);

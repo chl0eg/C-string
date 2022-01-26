@@ -1,4 +1,5 @@
 #include "string.h"
+#include <stddef.h>
 
 #include <iostream>
 
@@ -18,16 +19,18 @@ string::string (){ // ajout constructeur par défaut
 
 
 
-string::string(char* s){ //constructeur str donné
+string::string(const char* s){ //constructeur str donné
 	int l=0;
 	while (s[l]!='\0'){
 		l++;
-		}
+	}
 	len=l;
-	tab = new char[10];
+	capacity_=len;
+	tab = new char[capacity_];
 	memcpy(tab,s,len);
 	tab[len]='\0';
-	}
+
+}
 
 string::~string(){
     delete tab;
@@ -47,40 +50,59 @@ char* string::gettab(){ //get tab pas utiliser pour string vide
 	return this->tab;
 	}
 
-void string::resize(int size_t){
+
+
+void string::resize(size_t st){
 /*
 si size_t > longueur du string, on complètre tab avec le char c donné
 si size_t < longueur du string, on cut tab
 */
-
-	if (size_t<(this->len)){
-		std::cout << "short" << std::endl;
-		this->len=size_t;
+	if (st<(this->len)){
+		//std::cout << "short" << std::endl;
+		this->len=st;
 		this->tab[this->len]='\0';
-		memcpy(this->tab,this->tab,size_t);
+		memcpy(this->tab,this->tab,st);
+		this->capacity_=st;
 	}
 
-	if (size_t>this->len){
-		std::cout << "long" << std::endl;
+	if (st>this->len){
+		//std::cout << "long" << std::endl;
 
-		for(int i = this->len; i<size_t;i++){
+		for(int i = this->len; i<st;i++){
 			this->tab[i]='\0';
 		}
-		this->len=size_t;
-		this->tab[this->len]='\0';
-		memcpy(this->tab,this->tab,size_t);
+		this->tab[st]='\0';
+		memcpy(this->tab,this->tab,st);
+		this->capacity_=st;
 	}
 
-	if(size_t>100){
+	if(st>100){
 		std::cout << "! string trop grand !" << std::endl;
 	}
+}
 
+size_t string::capacity(){
+	return this->capacity_;
+}
+
+void string::reserve(size_t n){
+	if (n>this->capacity_){
+		this->capacity_ = n;
+		char* tab2 = new char[this->capacity_ ];
+		tab2 = this->tab;
+		memcpy(this->tab,tab2,this->capacity_ );
+
+	}
+	else{
+		std::cout << "Reserve une taille de stock plus petite que capacity!" << std::endl;
+	}
 }
 
 string& string::operator = (const char* s){
 
-	if (this->len != 0)
+	if (this->len != 0){
 		delete [] tab;
+	}
 
     int l = 0;
 	while (s[l]!='\0'){
@@ -90,7 +112,9 @@ string& string::operator = (const char* s){
 	len = l;
 	tab = new char[len+1];
 	memcpy(tab,s,len);
+	this->capacity_=l;
 	return *this;
+
 }
 
 string& string::operator += (const string& str)
@@ -104,27 +128,11 @@ string& string::operator += (const string& str)
 		data[i]=str.tab[i-len+str.len];
 	}
 	memcpy(tab, data, len);
+	this->capacity_ +=str.capacity_;
 
 	return *this;
 }
 
-
-
-/*string operator + (const string& str1, const string& str2){
-	len = str1.len + str2.len;
-
-	char* data = new char[len+1];
-	for (int i; i<str1.len; i++){
-		data[i]=str1.tab[i];
-		}
-
-	for (int i=str1.len; i<len; i++){
-		data[i]=str2.tab[i-str1.len];
-		}
-
-
-	return string(data);
-}*/
 string& string::operator = (const string& str){
 	if(len!=0){
 		delete[] tab;
@@ -132,6 +140,7 @@ string& string::operator = (const string& str){
 	len=str.len;
 	tab=new char[len+1];
 	memcpy(tab,str.tab,len+1);
+	this->capacity_ = len;
 	return *this;
 }
 
@@ -139,6 +148,7 @@ string operator + (const string& str1, const string& str2){
 	string new_str;
 	new_str=str1;
 	new_str+= str2;
+	/*new_str.capacity()=str1.capacity()+str2.capacity();*/
 	return new_str;
 }
 
@@ -147,7 +157,14 @@ void string::print(){
 	std::cout << this->tab <<std::endl;
 }
 
-
+int string::length() const{
+	if (tab==nullptr){
+		return 0;
+	}
+	else{
+		return this -> len;
+	}
+}
 
 int main(){
     char my_tab[100]={'B','o','n','j','o','u','r','\0'}; // déclaration ok
@@ -159,14 +176,24 @@ int main(){
 
     s2.print();
 	s2="yes";
+	cout<<s2.capacity()<< endl;
 	s2.print();
 
 	char my_tab2[100]={'A','i','m','e','r','\0'}; // déclaration ok
     string s3(my_tab2);
-	s3+=s2;
-	s3.print();
-	(s2+s3).print();
+	s3+=s2;//aimeryes
+	cout<<s3.capacity()<< endl;//8
+	s3.print();//aimeryes
+	(s2+s3).print();//yesaimeryes
 	/*s2+=s3;*/
+	cout<<(s2+s3).capacity()<< endl;
+	s2.reserve(1);
+	cout<<s2.capacity()<< endl;
+	cout<<s2.length()<< endl;
+	s2.resize(10);
+	cout<<s2.capacity()<< endl;
+	//5
+
 
 	}
 
