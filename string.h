@@ -30,6 +30,7 @@ class string{
         protected :
                 char* tab;
                 int len;
+                int capacity;
 };
 
 string operator + (const string&, char);
