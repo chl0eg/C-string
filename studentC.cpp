@@ -39,7 +39,13 @@ bool string::empty() const{
 	return (len == 0);
 }
 
+int string::getlength(){ //get length
+	return this -> len;
+	}
 
+char* string::gettab(){ //get tab pas utiliser pour string vide
+	return this->tab;
+	}
 
 void string::resize(int size_t){
 /*
@@ -87,9 +93,60 @@ string& string::operator = (const char* s){
 	return *this;
 }
 
+string& string::operator += (const string& str)
+{
+	len += str.len;
+	char* data = new char[len+1];
+	memcpy(data, tab, len);
+
+
+	for (int i=len-str.len; i<len; i++){
+		data[i]=str.tab[i-len+str.len];
+	}
+	memcpy(tab, data, len);
+
+	return *this;
+}
+
+
+
+/*string operator + (const string& str1, const string& str2){
+	len = str1.len + str2.len;
+
+	char* data = new char[len+1];
+	for (int i; i<str1.len; i++){
+		data[i]=str1.tab[i];
+		}
+
+	for (int i=str1.len; i<len; i++){
+		data[i]=str2.tab[i-str1.len];
+		}
+
+
+	return string(data);
+}*/
+string& string::operator = (const string& str){
+	if(len!=0){
+		delete[] tab;
+	}
+	len=str.len;
+	tab=new char[len+1];
+	memcpy(tab,str.tab,len+1);
+	return *this;
+}
+
+string operator + (const string& str1, const string& str2){
+	string new_str;
+	new_str=str1;
+	new_str+= str2;
+	return new_str;
+}
+
+
 void string::print(){
 	std::cout << this->tab <<std::endl;
 }
+
 
 
 int main(){
@@ -103,6 +160,13 @@ int main(){
     s2.print();
 	s2="yes";
 	s2.print();
+
+	char my_tab2[100]={'A','i','m','e','r','\0'}; // déclaration ok
+    string s3(my_tab2);
+	s3+=s2;
+	s3.print();
+	(s2+s3).print();
+	/*s2+=s3;*/
 
 	}
 

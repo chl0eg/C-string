@@ -23,6 +23,8 @@ class string{
                 string& operator = (const char* s);
                 string& operator = (char c);
                 string& operator += (char c);
+                string& operator += (const string& str);
+
 
 
         protected :
@@ -31,3 +33,4 @@ class string{
 };
 
 string operator + (const string&, char);
+string operator + (const string& str1, const string& str2);
