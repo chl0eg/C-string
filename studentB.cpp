@@ -9,7 +9,7 @@ string::string (){ // ajout constructeur par défaut
 
 
 
-string::string(char* s){ //constructeur str donné
+string::string(const char* s){ //constructeur str donné
 	int l=0;
 	while (s[l]!='\0'){
 		l++;
@@ -131,6 +131,7 @@ string& string::operator = (const string& str){
 	len=str.len;
 	tab=new char[len+1];
 	memcpy(tab,str.tab,len+1);
+	//delete[] tab;
 	return *this;
 }
 
@@ -140,6 +141,7 @@ string& string::operator += (char c){
 	nc=tab;
 	nc[len-1]=c;
 	memcpy(tab,nc,len);
+	//delete nc;
 	return *this;
 }
 
