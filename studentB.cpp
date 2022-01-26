@@ -19,7 +19,7 @@ string::string(const char* s){ //constructeur str donné
 	tab = new char[len];
 	memcpy(tab,s,len);
 	tab[len]='\0';
-	capacity=len;
+	capacity_=len;
 }
 
 
@@ -71,7 +71,7 @@ si size_t < longueur du string, on cut tab
 		this->len=st;
 		this->tab[this->len]='\0';
 		memcpy(this->tab,this->tab,st);
-		this->capacity=st;
+		this->capacity_=st;
 	}
 
 	if (st>this->len){
@@ -82,7 +82,7 @@ si size_t < longueur du string, on cut tab
 		}
 		this->tab[st]='\0';
 		memcpy(this->tab,this->tab,st);
-		this->capacity=st;
+		this->capacity_=st;
 	}
 
 	if(st>100){
@@ -102,7 +102,7 @@ si size_t < longueur du string, on cut tab
 		this->len=st;
 		this->tab[this->len]='\0';
 		memcpy(this->tab,this->tab,st);
-		this->capacity=st;
+		this->capacity_=st;
 	}
 
 	if (st>this->len){
@@ -114,7 +114,7 @@ si size_t < longueur du string, on cut tab
 		this->len=st;
 		this->tab[this->len]='\0';
 		memcpy(this->tab,this->tab,st);
-		this->capacity=st;
+		this->capacity_=st;
 	}
 
 	if(st>100){
@@ -132,7 +132,7 @@ string& string::operator = (const string& str){
 	len=str.len;
 	tab=new char[len+1];
 	memcpy(tab,str.tab,len+1);
-	capacity=len;
+	capacity_=len;
 	return *this;
 }
 
@@ -142,7 +142,7 @@ string& string::operator += (char c){
 	nc=tab;
 	nc[len-1]=c;
 	memcpy(tab,nc,len);
-	capacity=len;
+	capacity_=len;
 	return *this;
 }
 

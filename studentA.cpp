@@ -6,7 +6,7 @@
 string::string(const string& str){ // copy constructeur
   len = str.len;
   tab = str.tab;
-  capacity = len;
+  capacity_ = len;
 }
 
 const char* string::c_str(){ // c_str()
@@ -27,7 +27,7 @@ void string::clear(){ // clear()
   len = 0;
   //delete [] tab;
   tab = nullptr;
-  capacity = 0;
+  capacity_ = 0;
 }
 
 string& string::operator = (char c){ // operator = with char
@@ -40,7 +40,7 @@ string& string::operator = (char c){ // operator = with char
 	tab = new char[len+1];
   tab[0] = c;
   tab[len] = '\0';
-  capacity = len;
+  capacity_ = len;
 
   return *this;
 }
@@ -58,7 +58,7 @@ string& string::operator += (const char* pc){ // operator += used for operator +
   }
   len = nlen;
   tab = nt;
-  capacity = len;
+  capacity_ = len;
 	memcpy(tab,nt,nlen);
   //delete [] nt;
   return *this;
