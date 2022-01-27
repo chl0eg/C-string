@@ -16,10 +16,11 @@ string::string(const char* s){ //constructeur str donné
 		l++;
 	}
 	len=l;
-	tab = new char[len];
+	capacity_=len;
+	tab = new char[capacity_];
 	memcpy(tab,s,len);
 	tab[len]='\0';
-	capacity_=len;
+
 }
 
 
@@ -152,29 +153,4 @@ string operator + (const string& str, char c){
 	new_str=str;
 	new_str+= c;
 	return new_str;
-}
-//*********DANLIN**********
-string::~string(){
-		delete tab;
-    std::cout<< "string is being deleted" << std::endl;
-}
-
-bool string::empty() const{
-	return (len == 0);
-}
-
-string& string::operator = (const char* s){
-
-	if (this->len != 0)
-		delete [] tab;
-
-    int l = 0;
-	while (s[l]!='\0'){
-		l++;
-	}
-
-	len = l;
-	tab = new char[len+1];
-	memcpy(tab,s,len);
-	return *this;
 }
