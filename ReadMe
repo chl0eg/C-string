@@ -1,3 +1,12 @@
 Laurane A
 Chloe B
 Danlin C
+
+
+Pour executer, il faut compiler les fichiers studentA.cpp, studentB.cpp, studentC.cpp et string_tests.cpp.
+
+Vous pouvez aussi copier-coller ces lignes de command dans le terminal :
+$ g++ string_tests.cpp studentA.cpp studentB.cpp studentC.cpp -o string
+$ ./string
+
+
