@@ -125,7 +125,7 @@ si size_t < longueur du string, on cut tab
 }
 
 
-/*************** fonction ***************/
+/*************** opérateur ***************/
 string& string::operator = (const string& str){
 	if(len!=0){
 		delete[] tab;
